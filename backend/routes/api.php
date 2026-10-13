@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\Admin\ArticleReviewController;
+use App\Http\Controllers\Api\Admin\AreaManagementController;
+use App\Http\Controllers\Api\Admin\IssueManagementController;
+use App\Http\Controllers\Api\Admin\JournalManagementController;
 use App\Http\Controllers\Api\AreaController;
 use App\Http\Controllers\Api\ArticleController;
 use App\Http\Controllers\Api\AuthController;
@@ -42,9 +45,18 @@ Route::middleware('auth:sanctum')->group(function () {
     // Dono ou admin (a Policy decide quem pode)
     Route::delete('/articles/{article}', [ResearcherArticleController::class, 'destroy']);
 
-    // Administrador: avaliação e publicação
+    // Administrador
     Route::middleware('role:admin')->prefix('admin')->group(function () {
+        // Avaliação e publicação
         Route::get('/articles', [ArticleReviewController::class, 'index']);
         Route::patch('/articles/{article}/publish', [ArticleReviewController::class, 'publish']);
+
+        // CRUD de áreas, revistas e edições
+        Route::apiResource('areas', AreaManagementController::class)
+            ->only(['store', 'update', 'destroy']);
+        Route::apiResource('journals', JournalManagementController::class)
+            ->only(['store', 'update', 'destroy']);
+        Route::apiResource('issues', IssueManagementController::class)
+            ->only(['index', 'store', 'update', 'destroy']);
     });
 });
