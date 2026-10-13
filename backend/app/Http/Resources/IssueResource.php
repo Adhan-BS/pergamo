@@ -14,6 +14,7 @@ class IssueResource extends JsonResource
             'number' => $this->number,
             'year' => $this->year,
             'published_at' => $this->published_at?->toDateString(),
+            'articles_count' => $this->whenCounted('articles'),
             'journal' => new JournalResource($this->whenLoaded('journal')),
             'articles' => ArticleResource::collection($this->whenLoaded('articles')),
         ];

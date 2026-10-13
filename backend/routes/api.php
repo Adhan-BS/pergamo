@@ -4,11 +4,13 @@ use App\Http\Controllers\Api\Admin\ArticleReviewController;
 use App\Http\Controllers\Api\Admin\AreaManagementController;
 use App\Http\Controllers\Api\Admin\IssueManagementController;
 use App\Http\Controllers\Api\Admin\JournalManagementController;
+use App\Http\Controllers\Api\Admin\UserManagementController;
 use App\Http\Controllers\Api\AreaController;
 use App\Http\Controllers\Api\ArticleController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\IssueController;
 use App\Http\Controllers\Api\JournalController;
+use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ResearcherArticleController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +24,7 @@ Route::get('/areas', [AreaController::class, 'index']);
 Route::get('/journals', [JournalController::class, 'index']);
 Route::get('/journals/{journal}', [JournalController::class, 'show']);
 
+Route::get('/issues', [IssueController::class, 'index']);          // edições recentes (home)
 Route::get('/issues/{issue}', [IssueController::class, 'show']);
 
 Route::get('/articles', [ArticleController::class, 'index']);
@@ -32,6 +35,8 @@ Route::get('/articles/{id}/download', [ArticleController::class, 'download'])->w
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/me', [AuthController::class, 'me']);
+    Route::put('/me', [ProfileController::class, 'update']);
+    Route::put('/me/password', [ProfileController::class, 'updatePassword']);
 
     // Pesquisador: submissão e gestão dos próprios artigos
     Route::middleware('role:pesquisador')->group(function () {
@@ -58,5 +63,9 @@ Route::middleware('auth:sanctum')->group(function () {
             ->only(['store', 'update', 'destroy']);
         Route::apiResource('issues', IssueManagementController::class)
             ->only(['index', 'store', 'update', 'destroy']);
+
+        // Gestão de usuários
+        Route::get('/users', [UserManagementController::class, 'index']);
+        Route::patch('/users/{user}/role', [UserManagementController::class, 'updateRole']);
     });
 });
