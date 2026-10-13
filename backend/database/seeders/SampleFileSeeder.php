@@ -1,0 +1,18 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
+
+/**
+ * Cria um PDF de exemplo em storage/app/private/articles/exemplo.pdf
+ * para que o endpoint de download funcione com os artigos do seeder.
+ */
+class SampleFileSeeder extends Seeder
+{
+    public function run(): void
+    {
+        Storage::disk('local')->put('articles/exemplo.pdf', base64_decode('JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA1OTUgODQyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCAxMzYgPj4Kc3RyZWFtCkJUIC9GMSAyMCBUZiA3MiA3NjAgVGQgKFBlcmdcMzQxbW8gLSBBcnRpZ28gZGUgZXhlbXBsbykgVGogMCAtMzAgVGQgL0YxIDEyIFRmIChFc3RlIGFycXVpdm8gZSB1bSBQREYgZGUgdGVzdGUgZ2VyYWRvIHBlbG8gc2VlZGVyLikgVGogRVQKZW5kc3RyZWFtCmVuZG9iago1IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0eXBlIC9UeXBlMSAvQmFzZUZvbnQgL0hlbHZldGljYSAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyA+PgplbmRvYmoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDA5IDAwMDAwIG4gCjAwMDAwMDAwNTggMDAwMDAgbiAKMDAwMDAwMDExNSAwMDAwMCBuIAowMDAwMDAwMjQxIDAwMDAwIG4gCjAwMDAwMDA0MjggMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA2IC9Sb290IDEgMCBSID4+CnN0YXJ0eHJlZgo1MjUKJSVFT0YK'));
+    }
+}

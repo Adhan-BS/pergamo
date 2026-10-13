@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AreaSeeder::class,
             UserSeeder::class,
+            SampleFileSeeder::class,
             DemoContentSeeder::class,
         ]);
     }
