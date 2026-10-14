@@ -204,6 +204,143 @@
       ]
     },
     {
+      "name": "Perfil",
+      "item": [
+        {
+          "name": "Editar perfil",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"name\": \"Maria Silva Santos\",\r\n\"institution\": \"UFAM\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/me",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Perfil com e-mail repetido",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\": \"admin@pergamo.test\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/me",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Tentar Virar Adm",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"role\": \"admin\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/me",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Trocar senha errada",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"current_password\": \"errada123\",\r\n  \"password\": \"novasenha123\",\r\n  \"password_confirmation\": \"novasenha123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/me/password",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "me",
+                "password"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Trocar senha",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"current_password\": \"novasenha123\",\r\n  \"password\": \"senha1234\",\r\n  \"password_confirmation\": \"senha1234\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/me/password",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "me",
+                "password"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
       "name": "Areas",
       "item": [
         {
@@ -303,6 +440,52 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Edições Recentes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/issues?per_page=6",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "issues"
+              ],
+              "query": [
+                {
+                  "key": "per_page",
+                  "value": "6"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Edições por Area",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/issues?area=saude",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "issues"
+              ],
+              "query": [
+                {
+                  "key": "area",
+                  "value": "saude"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -380,6 +563,25 @@
               "path": [
                 "articles",
                 "4"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Baixar PDF",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/articles/1/download",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "articles",
+                "1",
+                "download"
               ]
             }
           },
@@ -505,44 +707,6 @@
           "response": []
         },
         {
-          "name": "Enviar para avaliação",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/articles/5/submit",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "articles",
-                "5",
-                "submit"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Baixar PDF",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/articles/1/download",
-              "host": [
-                "{{base_url}}"
-              ],
-              "path": [
-                "articles",
-                "1",
-                "download"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "name": "Trocar PDF",
           "request": {
             "method": "POST",
@@ -572,6 +736,25 @@
           "response": []
         },
         {
+          "name": "Enviar para avaliação",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/articles/5/submit",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "articles",
+                "5",
+                "submit"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "Deletar artigo",
           "request": {
             "method": "DELETE",
@@ -594,6 +777,559 @@
     {
       "name": "Admin",
       "item": [
+        {
+          "name": "Gerenciar Areas",
+          "item": [
+            {
+              "name": "Criar Area",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.environment.set(\"area_id\", pm.response.json().data.id);"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"name\": \"Engenharias\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/admin/areas",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "areas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Criar area duplicada",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"name\": \"Engenharias\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/admin/areas",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "areas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Editar Area",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"name\": \"Engenharias e Arquitetura\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/admin/areas/6",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "areas",
+                    "6"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Excluir Area",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/admin/areas/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "areas",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Excluir Area com Revista",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/admin/areas/6",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "areas",
+                    "6"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Gerenciar Revistas",
+          "item": [
+            {
+              "name": "Criar Revista",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "\tpm.environment.set(\"journal_id\", pm.response.json().data.id);"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"area_id\": 4,\r\n\"title\": \"Revista de Tecnologia e Sociedade\", \r\n\"description\": \"Tecnologia aplicada\", \r\n\"issn\": \"2674-0004\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/admin/journals",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "journals"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Criar revista ISSN inválido",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"area_id\": 4,\r\n\"title\": \"Revista de Tecnologia e Sociedade\", \r\n\"description\": \"Tecnologia aplicada\", \r\n\"issn\": \"2674-0004\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/admin/journals",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "journals"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Editar Revista",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"area_id\": 4,\r\n\"title\": \"Revista de Tecnologia e Sociedade\",\r\n\"description\": \"Tecnologia aplicada\",\r\n\r\n\"issn\": \"2674-0004\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/admin/journals/4",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "journals",
+                    "4"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Excluir Revistas com artigos",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/admin/journals/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "journals",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Gerenciar Edições",
+          "item": [
+            {
+              "name": "Criar Edição",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.environment.set(\"issue_id\", pm.response.json().data.id);"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"journal_id\": 4,\r\n    \"year\": 2026,\r\n    \"number\": 1,\r\n    \"published_at\": \"2026-10-13\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/admin/issues",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "issues"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Criar mesma edição",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"journal_id\": 6,\r\n\"year\": 2026,\r\n\"number\": 1,\r\n\"published_at\": \"2026-10-13\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/admin/issues",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "issues"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Listar edições",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/admin/issues?journal=4",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "issues"
+                  ],
+                  "query": [
+                    {
+                      "key": "journal",
+                      "value": "4"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Editar edição",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"journal_id\": 4,\r\n\"year\": 2026,\r\n\"number\": 2\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/admin/issues/4",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "issues",
+                    "4"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Excluir edição com artigos",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/admin/issues/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "issues",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Excluir Edição Vazia",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/admin/issues/4",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "issues",
+                    "4"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Gerenciar User",
+          "item": [
+            {
+              "name": "Listar Usuarios",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/admin/users",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "users"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Filtrar por perfil",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/admin/users?role=pesquisador",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "key": "role",
+                      "value": "pesquisador"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Buscar",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/admin/users?q=leitor",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "leitor"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Promover leitor",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"role\": \"pesquisador\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/admin/users/3/role",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "users",
+                    "3",
+                    "role"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Perfil invalido",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": ""
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Alterar o proprio perfil",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"role\": \"leitor\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/admin/users/1/role",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "users",
+                    "1",
+                    "role"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
         {
           "name": "Fila de avalição",
           "request": {
