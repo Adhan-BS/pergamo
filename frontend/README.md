@@ -70,4 +70,4 @@ Se a API estiver em outro endereço, crie um arquivo `.env` (veja `.env.example`
 VITE_API_URL=https://endereco-da-api/api
 ```
 
-Nesse caso, a API precisa liberar CORS para o domínio do front-end.
+Nesse caso, a API precisa liberar CORES para o domínio do front-end.
