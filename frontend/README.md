@@ -17,7 +17,7 @@ npm run dev
 
 Abra `http://localhost:5173`.
 
-Em desenvolvimento, o Vite repassa as chamadas `/api` para o Laravel (veja `vite.config.js`), então **não há problema de CORS** e nada precisa ser configurado.
+Em desenvolvimento, o Vite repassa as chamadas `/api` para o Laravel (veja `vite.config.js`), então **não há problema de CORES** e nada precisa ser configurado.
 
 Outros comandos:
 
