@@ -1,0 +1,234 @@
+/* ===== Filtros ===== */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.filtros input,
+.filtros select {
+  padding: 12px 15px;
+  border: 1px solid #d9d2c3;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: #fff;
+}
+
+.filtros input {
+  flex: 1;
+  min-width: 240px;
+}
+
+.resultado-contagem {
+  margin-bottom: 25px;
+  color: #5b5348;
+}
+
+/* ===== Cards de artigo (estilo "capa") ===== */
+.artigos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 25px;
+}
+
+.artigo-card {
+  display: block;
+  background: var(--bege-claro);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  color: inherit;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.artigo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.capa {
+  position: relative;
+  height: 260px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--azul), var(--azul-claro));
+  transition: 0.3s;
+}
+
+.artigo-card:hover .capa {
+  box-shadow: 0 0 15px rgba(184, 134, 11, 0.35);
+}
+
+.capa-conteudo {
+  height: 100%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  color: #fff;
+  transition: opacity 0.4s ease;
+}
+
+.capa-conteudo h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+.sinopse {
+  position: absolute;
+  inset: 0;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(28, 48, 80, 0.94);
+  color: #fff;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  text-align: center;
+  overflow-y: auto;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.artigo-card:hover .sinopse,
+.artigo-card:focus-visible .sinopse {
+  opacity: 1;
+}
+
+.artigo-card:hover .capa-conteudo {
+  opacity: 0.1;
+}
+
+.artigo-info {
+  padding: 18px 22px 22px;
+}
+
+.artigo-info h4 {
+  color: var(--azul);
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.artigo-info p {
+  color: #6b6155;
+  font-size: 0.88rem;
+}
+
+/* ===== Paginação ===== */
+.paginacao {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.paginacao button {
+  padding: 8px 14px;
+  background: #fff;
+  border: 1px solid var(--azul);
+  border-radius: 8px;
+  color: var(--azul);
+  font-family: inherit;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.paginacao button:hover:not(:disabled) {
+  background: var(--bege-claro);
+}
+
+.paginacao button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.paginacao .atual {
+  background: var(--azul);
+  color: #fff;
+}
+
+/* ===== Detalhe do artigo ===== */
+.artigo-detalhe {
+  max-width: 880px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: var(--sombra);
+}
+
+.artigo-detalhe h1 {
+  font-family: 'Cinzel', serif;
+  color: var(--azul);
+  font-size: 2rem;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.artigo-detalhe h2 {
+  display: inline-block;
+  margin: 30px 0 12px;
+  color: var(--azul);
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  border-bottom: 3px solid var(--dourado);
+  padding-bottom: 4px;
+}
+
+.artigo-meta {
+  color: #6b6155;
+  margin-bottom: 20px;
+}
+
+.artigo-meta a {
+  color: var(--azul);
+  font-weight: 500;
+}
+
+.autores {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.autores li {
+  padding: 4px 0;
+}
+
+.autores span {
+  color: #6b6155;
+}
+
+.resumo {
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.artigo-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  margin-top: 35px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.artigo-acoes span {
+  color: #6b6155;
+}
+
+@media (max-width: 700px) {
+  .artigo-detalhe {
+    padding: 25px;
+  }
+
+  .artigo-detalhe h1 {
+    font-size: 1.5rem;
+  }
+}

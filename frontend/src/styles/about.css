@@ -1,0 +1,73 @@
+.sobre {
+  padding: 70px 8%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  background: var(--bege-claro);
+}
+
+.sobre-texto span {
+  color: var(--dourado);
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+}
+
+.sobre-texto h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 3rem;
+  color: var(--azul);
+  margin: 15px 0 25px;
+}
+
+.sobre-texto p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.sobre-info {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.info-card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.info-card h3 {
+  color: var(--azul);
+  font-family: 'Cinzel', serif;
+  margin-bottom: 20px;
+}
+
+.linha {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.linha:last-child {
+  border-bottom: none;
+}
+
+.info-card p {
+  margin-bottom: 14px;
+}
+
+@media (max-width: 900px) {
+  .sobre {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .sobre-texto h2 {
+    font-size: 2.2rem;
+  }
+}

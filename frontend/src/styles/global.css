@@ -1,0 +1,486 @@
+/* ===== Identidade visual do Pérgamo (herdada do front original) ===== */
+:root {
+  --azul: #1c3050;
+  --azul-claro: #304d7a;
+  --dourado: #b8860b;
+  --dourado-claro: #c99716;
+  --bege: #f5f0e8;
+  --bege-claro: #faf8f2;
+  --texto: #2c241c;
+  --erro: #a4262c;
+  --sucesso: #2e7d32;
+  --sombra: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bege);
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 3px solid var(--dourado-claro);
+  outline-offset: 2px;
+}
+
+/* ===== Estrutura ===== */
+.page {
+  padding-top: 90px; /* altura do cabeçalho fixo */
+  min-height: 75vh;
+}
+
+.container {
+  padding: 50px 8%;
+}
+
+.secao {
+  padding: 70px 8%;
+  background: var(--bege);
+}
+
+.secao-clara {
+  background: var(--bege-claro);
+}
+
+.secao-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 35px;
+}
+
+.secao-header h2 {
+  color: var(--azul);
+  font-family: 'Cinzel', serif;
+  border-bottom: 3px solid var(--dourado);
+  padding-bottom: 8px;
+}
+
+/* ===== Cabeçalho ===== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--azul);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 2%;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.logo-area img {
+  width: 70px;
+  height: auto;
+}
+
+.logo-area h1 {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 2px;
+  font-size: 1.7rem;
+  line-height: 1.1;
+}
+
+.logo-area p {
+  color: var(--dourado);
+  font-size: 0.9rem;
+}
+
+.menu-mobile {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.site-header nav a,
+.site-header .nav-btn {
+  text-decoration: none;
+  color: #fff;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.site-header nav a:hover,
+.site-header .nav-btn:hover {
+  background: var(--dourado);
+  color: var(--bege-claro);
+}
+
+.site-header nav a.active {
+  background: var(--dourado);
+  color: #fff;
+}
+
+.site-header nav a.destaque {
+  background: var(--dourado);
+  border-color: var(--dourado);
+}
+
+.site-header nav a.destaque:hover {
+  background: var(--dourado-claro);
+}
+
+.pesquisa {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  width: 240px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.pesquisa input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.pesquisa button {
+  border: none;
+  background: var(--dourado);
+  color: #fff;
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pesquisa button:hover {
+  background: var(--dourado-claro);
+}
+
+/* ===== Botões ===== */
+.btn {
+  display: inline-block;
+  border: 2px solid transparent;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--dourado);
+  color: var(--bege-claro);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--dourado-claro);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--dourado);
+  color: #fff;
+}
+
+.btn-outline:hover {
+  border-color: var(--dourado-claro);
+  box-shadow: 0 0 10px rgba(184, 134, 11, 0.5), 0 0 20px rgba(184, 134, 11, 0.3);
+}
+
+.btn-dark {
+  background: var(--azul);
+  color: #fff;
+  font-weight: 500;
+}
+
+.btn-dark:hover:not(:disabled) {
+  background: var(--dourado);
+}
+
+.btn-ghost,
+.btn-ghost-escuro {
+  background: transparent;
+  color: var(--azul);
+  border-color: rgba(28, 48, 80, 0.35);
+}
+
+.btn-ghost:hover,
+.btn-ghost-escuro:hover {
+  border-color: var(--azul);
+}
+
+.btn-bloco {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* ===== Elementos comuns ===== */
+.selo-area {
+  display: inline-block;
+  color: var(--dourado-claro);
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.selo-escuro {
+  background: var(--azul);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.voltar {
+  display: block;
+  width: fit-content;
+  margin-bottom: 20px;
+  color: var(--azul);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.voltar:hover {
+  text-decoration: underline;
+}
+
+.cabecalho-pagina {
+  margin-bottom: 40px;
+}
+
+.cabecalho-pagina h1 {
+  color: var(--azul);
+  font-family: 'Cinzel', serif;
+  margin-bottom: 10px;
+}
+
+.cabecalho-pagina small {
+  display: block;
+  color: #6b6155;
+  margin-bottom: 10px;
+}
+
+.cabecalho-pagina p {
+  max-width: 700px;
+  line-height: 1.7;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chips-filtro {
+  margin-bottom: 30px;
+}
+
+.chip {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: var(--bege-claro);
+  border: 1px solid rgba(184, 134, 11, 0.45);
+  color: var(--azul);
+  font-family: inherit;
+  font-size: 0.85rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.chip:hover {
+  background: var(--dourado);
+  color: #fff;
+}
+
+.chip-ativo {
+  background: var(--azul);
+  border-color: var(--azul);
+  color: #fff;
+}
+
+/* ===== Estados (carregando, erro, vazio) ===== */
+.estado {
+  text-align: center;
+  padding: 60px 8%;
+  color: #5b5348;
+}
+
+.estado h2 {
+  color: var(--azul);
+  font-family: 'Cinzel', serif;
+  margin-bottom: 10px;
+}
+
+.estado p {
+  margin-bottom: 20px;
+}
+
+.estado-erro {
+  color: #7a1f1f;
+}
+
+.estado-vazio {
+  background: var(--bege-claro);
+  border: 1px dashed rgba(184, 134, 11, 0.5);
+  border-radius: 12px;
+}
+
+.spinner {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  margin-right: 10px;
+  vertical-align: middle;
+  border: 3px solid rgba(184, 134, 11, 0.3);
+  border-top-color: var(--dourado);
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== Rodapé ===== */
+.site-footer {
+  background: var(--azul);
+  color: #fff;
+  padding: 40px 8%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.site-footer h3 {
+  font-family: 'Cinzel', serif;
+  color: var(--dourado);
+}
+
+.site-footer span {
+  display: block;
+  margin-top: 10px;
+  opacity: 0.7;
+}
+
+.footer-links {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.footer-links a {
+  color: #fff;
+  opacity: 0.85;
+}
+
+.footer-links a:hover {
+  color: var(--dourado-claro);
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 1180px) {
+  .pesquisa {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .menu-mobile {
+    display: block;
+  }
+
+  .site-header nav {
+    display: none;
+  }
+
+  .site-header nav.aberto {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    top: 100%;
+    right: 10px;
+    min-width: 200px;
+    gap: 10px;
+    padding: 15px;
+    background: var(--azul);
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .site-header nav a,
+  .site-header .nav-btn {
+    text-align: center;
+  }
+
+  .logo-area img {
+    width: 55px;
+  }
+
+  .logo-area h1 {
+    font-size: 1.3rem;
+  }
+}

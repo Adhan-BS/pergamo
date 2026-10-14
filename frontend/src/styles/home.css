@@ -1,0 +1,226 @@
+/* ===== Hero ===== */
+.hero {
+  min-height: 85vh;
+  background: linear-gradient(rgba(28, 48, 80, 0.88), rgba(28, 48, 80, 0.88)),
+    url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  padding: 60px 8% 110px;
+  color: #fff;
+  position: relative;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero h2 {
+  font-size: 3.2rem;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  font-family: 'Cinzel', serif;
+}
+
+.hero h2 span {
+  color: var(--dourado);
+}
+
+.hero p {
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.hero-capas {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.hero-capa {
+  width: 190px;
+  height: 270px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--azul), var(--azul-claro));
+  border: 1px solid rgba(184, 134, 11, 0.4);
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: 0.3s;
+}
+
+.hero-capa strong {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.hero-capa:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 15px rgba(184, 134, 11, 0.35), 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.hero-capa:nth-child(2):hover {
+  transform: translateY(-30px) scale(1.05);
+}
+
+.hero-faixa {
+  position: absolute;
+  bottom: 30px;
+  left: 8%;
+  color: var(--dourado);
+  font-family: 'Cinzel', serif;
+  padding: 10px 0;
+}
+
+/* ===== Áreas ===== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: var(--bege-claro);
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid rgba(184, 134, 11, 0.15);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.area-card {
+  color: inherit;
+  text-decoration: none;
+}
+
+.area-card h3 {
+  color: var(--azul);
+  margin-bottom: 8px;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+/* ===== Edições ===== */
+.edicoes-grid,
+.revistas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.edicao-card,
+.revista-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 25px;
+  background: var(--bege-claro);
+  border-left: 6px solid var(--dourado);
+  border-radius: 10px;
+  box-shadow: var(--sombra);
+  color: inherit;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.edicao-card:hover,
+.revista-card:hover {
+  transform: translateX(8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.edicao-card h3,
+.revista-card h3 {
+  color: var(--azul);
+  font-family: 'Cinzel', serif;
+}
+
+.edicao-numero {
+  font-weight: 500;
+}
+
+.edicao-card small,
+.revista-card small {
+  color: #6b6155;
+}
+
+.revista-card p {
+  line-height: 1.6;
+}
+
+.ver-mais {
+  margin-top: 8px;
+  color: var(--dourado);
+  font-weight: 600;
+}
+
+/* ===== Chamada para publicar ===== */
+.chamada {
+  background: var(--azul);
+  color: #fff;
+  text-align: center;
+  padding: 70px 8%;
+}
+
+.chamada h2 {
+  font-family: 'Cinzel', serif;
+  color: var(--dourado);
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.chamada p {
+  max-width: 650px;
+  margin: 0 auto 30px;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 50px;
+    min-height: auto;
+  }
+
+  .hero h2 {
+    font-size: 2.3rem;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-capas {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-capa {
+    width: 150px;
+    height: 215px;
+  }
+
+  .hero-faixa {
+    position: static;
+    text-align: center;
+  }
+}
