@@ -17,7 +17,7 @@ npm run dev
 
 Abra `http://localhost:5173`.
 
-Em desenvolvimento, o Vite repassa as chamadas `/api` para o Laravel (veja `vite.config.js`), então **não há problema de CORES** e nada precisa ser configurado.
+Em desenvolvimento, o Vite repassa as chamadas `/api` para o Laravel (veja `vite.config.js`), então **não há problema de CORS** e nada precisa ser configurado.
 
 Outros comandos:
 
@@ -70,4 +70,4 @@ Se a API estiver em outro endereço, crie um arquivo `.env` (veja `.env.example`
 VITE_API_URL=https://endereco-da-api/api
 ```
 
-Nesse caso, a API precisa liberar CORES para o domínio do front-end.
+Nesse caso, a API precisa liberar CORS para o domínio do front-end.
