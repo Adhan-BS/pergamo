@@ -46,7 +46,11 @@ export default function Home() {
             <Link to="/artigos" className="btn btn-primary">
               Explorar artigos
             </Link>
-            {user ? (
+            {user?.role === 'pesquisador' ? (
+              <Link to="/meus-artigos/novo" className="btn btn-outline">
+                Enviar artigo
+              </Link>
+            ) : user ? (
               <Link to="/conta" className="btn btn-outline">
                 Minha conta
               </Link>
@@ -149,7 +153,11 @@ export default function Home() {
           O Pérgamo é uma alternativa simples e acessível para pesquisadores divulgarem seus trabalhos e
           para qualquer pessoa ler ciência de qualidade.
         </p>
-        {user ? (
+        {user?.role === 'pesquisador' ? (
+          <Link to="/meus-artigos/novo" className="btn btn-primary">
+            Enviar meu artigo
+          </Link>
+        ) : user ? (
           <Link to="/conta" className="btn btn-primary">
             Ir para minha conta
           </Link>

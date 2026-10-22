@@ -41,6 +41,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Pesquisador: submissão e gestão dos próprios artigos
     Route::middleware('role:pesquisador')->group(function () {
         Route::get('/my/articles', [ResearcherArticleController::class, 'index']);
+        Route::get('/my/articles/{article}', [ResearcherArticleController::class, 'show']);
         Route::post('/articles', [ResearcherArticleController::class, 'store']);
         Route::put('/articles/{article}', [ResearcherArticleController::class, 'update']);
         Route::post('/articles/{article}/file', [ResearcherArticleController::class, 'replaceFile']);

@@ -12,6 +12,8 @@ import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import Account from './pages/Account.jsx';
 import NotFound from './pages/NotFound.jsx';
+import MyArticles from './pages/researcher/MyArticles.jsx';
+import ArticleForm from './pages/researcher/ArticleForm.jsx';
 
 export default function App() {
   return (
@@ -31,6 +33,30 @@ export default function App() {
           element={
             <ProtectedRoute>
               <Account />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="meus-artigos"
+          element={
+            <ProtectedRoute roles={['pesquisador']}>
+              <MyArticles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="meus-artigos/novo"
+          element={
+            <ProtectedRoute roles={['pesquisador']}>
+              <ArticleForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="meus-artigos/:id/editar"
+          element={
+            <ProtectedRoute roles={['pesquisador']}>
+              <ArticleForm />
             </ProtectedRoute>
           }
         />

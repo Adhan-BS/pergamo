@@ -1,0 +1,174 @@
+/* ===== Selo de status ===== */
+.status {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.status-rascunho {
+  background: #eceff3;
+  color: #4a5568;
+}
+
+.status-submetido {
+  background: #fff4d6;
+  color: #8a6100;
+}
+
+.status-publicado {
+  background: #e3f4e6;
+  color: #1f6b2a;
+}
+
+/* ===== Lista "Meus artigos" ===== */
+.meus-artigos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.meu-artigo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px 24px;
+  background: #fff;
+  border-left: 6px solid var(--dourado);
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+}
+
+.meu-artigo-info {
+  flex: 1;
+  min-width: 260px;
+}
+
+.meu-artigo-info h3 {
+  margin: 8px 0 4px;
+  color: var(--azul);
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.meu-artigo-info p {
+  color: #6b6155;
+  font-size: 0.9rem;
+}
+
+.meu-artigo-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn-pequeno {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+
+.btn-perigo {
+  background: transparent;
+  color: var(--erro);
+  border-color: rgba(164, 38, 44, 0.45);
+}
+
+.btn-perigo:hover:not(:disabled) {
+  background: var(--erro);
+  border-color: var(--erro);
+  color: #fff;
+}
+
+/* ===== Formulário de artigo ===== */
+.form-largo {
+  max-width: 760px;
+}
+
+.form-largo textarea {
+  resize: vertical;
+}
+
+.grupo {
+  border: none;
+  min-width: 0;
+}
+
+.grupo:disabled {
+  opacity: 0.6;
+}
+
+.autores-editor {
+  margin-bottom: 22px;
+}
+
+.autores-editor h3 {
+  margin-bottom: 10px;
+  color: var(--azul);
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+}
+
+.autor-linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 14px;
+  margin-bottom: 12px;
+  background: var(--bege-claro);
+  border: 1px solid rgba(184, 134, 11, 0.2);
+  border-radius: 10px;
+}
+
+.autor-linha .campo {
+  margin-bottom: 0;
+}
+
+.autor-linha .campo label {
+  font-size: 0.8rem;
+}
+
+.autor-linha .btn-perigo {
+  align-self: end;
+  justify-self: end;
+}
+
+.form-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.bloco-pdf {
+  margin-top: 25px;
+}
+
+.bloco-pdf h3 {
+  margin-bottom: 6px;
+  color: var(--azul);
+  font-family: 'Cinzel', serif;
+}
+
+.card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .autor-linha {
+    grid-template-columns: 1fr;
+  }
+
+  .autor-linha .btn-perigo {
+    margin-top: 0;
+    justify-self: start;
+  }
+}

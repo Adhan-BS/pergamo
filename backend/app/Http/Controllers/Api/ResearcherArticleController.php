@@ -32,6 +32,14 @@ class ResearcherArticleController extends Controller
         return ManagedArticleResource::collection($items);
     }
 
+    /** Um artigo do pesquisador logado (usado na tela de edição). */
+    public function show(Article $article)
+    {
+        Gate::authorize('view', $article);
+
+        return new ManagedArticleResource($article->load(self::RELATIONS));
+    }
+
     public function store(StoreArticleRequest $request)
     {
         $article = $this->articles->create(

@@ -20,3 +20,15 @@ export const catalog = {
   getArticles: (params) => request('/articles', { params }), // paginado: { data, meta }
   getArticle: (id) => request(`/articles/${id}`).then((r) => r.data),
 };
+
+// ---------- Área do pesquisador ----------
+export const researcher = {
+  list: (page) => request('/my/articles', { params: { page } }), // paginado: { data, meta }
+  get: (id) => request(`/my/articles/${id}`).then((r) => r.data),
+  create: (formData) => request('/articles', { method: 'POST', body: formData }).then((r) => r.data),
+  update: (id, data) => request(`/articles/${id}`, { method: 'PUT', body: data }).then((r) => r.data),
+  replaceFile: (id, formData) =>
+    request(`/articles/${id}/file`, { method: 'POST', body: formData }).then((r) => r.data),
+  submit: (id) => request(`/articles/${id}/submit`, { method: 'POST' }).then((r) => r.data),
+  remove: (id) => request(`/articles/${id}`, { method: 'DELETE' }),
+};

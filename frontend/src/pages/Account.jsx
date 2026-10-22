@@ -1,13 +1,17 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { auth } from '../api/index.js';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth, researcher } from '../api/index.js';
 import { useAuth } from '../context/AuthContext.jsx';
+import { useFetch } from '../hooks/useFetch.js';
 import { fieldError, initials, roleLabel } from '../utils/format.js';
 import FormField from '../components/FormField.jsx';
 
 export default function Account() {
   const { user, updateUser, logout } = useAuth();
   const navigate = useNavigate();
+
+  const isResearcher = user.role === 'pesquisador';
+  const mine = useFetch(() => (isResearcher ? researcher.list(1) : Promise.resolve(null)), [isResearcher]);
 
   const [profile, setProfile] = useState({
     name: user.name,
@@ -93,6 +97,12 @@ export default function Account() {
           <h3>📅 Membro desde</h3>
           <span>{memberSince}</span>
         </div>
+        {isResearcher && (
+          <Link to="/meus-artigos" className="card-dashboard card-link">
+            <h3>📄 Meus artigos</h3>
+            <span>{mine.data?.meta?.total ?? '—'}</span>
+          </Link>
+        )}
       </section>
 
       <section className="secao-conta">

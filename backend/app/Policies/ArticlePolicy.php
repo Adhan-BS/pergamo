@@ -7,6 +7,12 @@ use App\Models\User;
 
 class ArticlePolicy
 {
+    /** O dono vê o próprio artigo em qualquer status, inclusive rascunhos. */
+    public function view(User $user, Article $article): bool
+    {
+        return $this->owns($user, $article);
+    }
+
     /** Só pesquisadores submetem artigos. */
     public function create(User $user): bool
     {

@@ -36,6 +36,7 @@ src/
 ├── hooks/        useFetch (carregamento de dados)
 ├── pages/        Home, Catalog, ArticleDetail, Journals, JournalDetail,
 │                 IssueDetail, About, Login, Register, Account, NotFound
+│   └── researcher/   MyArticles, ArticleForm (área do pesquisador)
 ├── styles/       CSS global e por página
 └── utils/        formatação de datas, rótulos e erros de formulário
 ```
@@ -54,6 +55,9 @@ src/
 | `/entrar` | Login | Público |
 | `/cadastro` | Cadastro de leitor ou pesquisador | Público |
 | `/conta` | Perfil e troca de senha | Logado |
+| `/meus-artigos` | Lista dos meus artigos, com status, enviar para avaliação e excluir | Pesquisador |
+| `/meus-artigos/novo` | Enviar um novo artigo com PDF | Pesquisador |
+| `/meus-artigos/:id/editar` | Editar o artigo, trocar o PDF ou enviar para avaliação | Pesquisador |
 
 ## Como funciona a autenticação
 
