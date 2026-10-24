@@ -1,4 +1,4 @@
-import { request } from './client.js';
+import { request, requestBlob } from './client.js';
 
 // ---------- Autenticação e perfil ----------
 export const auth = {
@@ -31,4 +31,36 @@ export const researcher = {
     request(`/articles/${id}/file`, { method: 'POST', body: formData }).then((r) => r.data),
   submit: (id) => request(`/articles/${id}/submit`, { method: 'POST' }).then((r) => r.data),
   remove: (id) => request(`/articles/${id}`, { method: 'DELETE' }),
+};
+
+// ---------- Painel do administrador ----------
+const data = (response) => response.data;
+
+export const admin = {
+  // Avaliação e publicação
+  reviewQueue: (params) => request('/admin/articles', { params }), // paginado: { data, meta }
+  readPdf: (id) => requestBlob(`/admin/articles/${id}/download`),
+  publish: (id, issueId) =>
+    request(`/admin/articles/${id}/publish`, { method: 'PATCH', body: { issue_id: issueId } }).then(data),
+  deleteArticle: (id) => request(`/articles/${id}`, { method: 'DELETE' }),
+
+  // Áreas
+  createArea: (body) => request('/admin/areas', { method: 'POST', body }).then(data),
+  updateArea: (id, body) => request(`/admin/areas/${id}`, { method: 'PUT', body }).then(data),
+  deleteArea: (id) => request(`/admin/areas/${id}`, { method: 'DELETE' }),
+
+  // Revistas
+  createJournal: (body) => request('/admin/journals', { method: 'POST', body }).then(data),
+  updateJournal: (id, body) => request(`/admin/journals/${id}`, { method: 'PUT', body }).then(data),
+  deleteJournal: (id) => request(`/admin/journals/${id}`, { method: 'DELETE' }),
+
+  // Edições
+  listIssues: (params) => request('/admin/issues', { params }), // paginado: { data, meta }
+  createIssue: (body) => request('/admin/issues', { method: 'POST', body }).then(data),
+  updateIssue: (id, body) => request(`/admin/issues/${id}`, { method: 'PUT', body }).then(data),
+  deleteIssue: (id) => request(`/admin/issues/${id}`, { method: 'DELETE' }),
+
+  // Usuários
+  listUsers: (params) => request('/admin/users', { params }), // paginado: { data, meta }
+  setRole: (id, role) => request(`/admin/users/${id}/role`, { method: 'PATCH', body: { role } }).then(data),
 };

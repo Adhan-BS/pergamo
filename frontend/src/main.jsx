@@ -11,6 +11,7 @@ import './styles/forms.css';
 import './styles/account.css';
 import './styles/about.css';
 import './styles/researcher.css';
+import './styles/admin.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

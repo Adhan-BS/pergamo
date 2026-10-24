@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import Home from './pages/Home.jsx';
@@ -14,6 +14,12 @@ import Account from './pages/Account.jsx';
 import NotFound from './pages/NotFound.jsx';
 import MyArticles from './pages/researcher/MyArticles.jsx';
 import ArticleForm from './pages/researcher/ArticleForm.jsx';
+import AdminLayout from './pages/admin/AdminLayout.jsx';
+import ReviewQueue from './pages/admin/ReviewQueue.jsx';
+import ManageAreas from './pages/admin/ManageAreas.jsx';
+import ManageJournals from './pages/admin/ManageJournals.jsx';
+import ManageIssues from './pages/admin/ManageIssues.jsx';
+import ManageUsers from './pages/admin/ManageUsers.jsx';
 
 export default function App() {
   return (
@@ -60,6 +66,21 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="admin"
+          element={
+            <ProtectedRoute roles={['admin']}>
+              <AdminLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Navigate to="avaliacao" replace />} />
+          <Route path="avaliacao" element={<ReviewQueue />} />
+          <Route path="areas" element={<ManageAreas />} />
+          <Route path="revistas" element={<ManageJournals />} />
+          <Route path="edicoes" element={<ManageIssues />} />
+          <Route path="usuarios" element={<ManageUsers />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

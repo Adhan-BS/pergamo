@@ -50,6 +50,10 @@ export default function Home() {
               <Link to="/meus-artigos/novo" className="btn btn-outline">
                 Enviar artigo
               </Link>
+            ) : user?.role === 'admin' ? (
+              <Link to="/admin" className="btn btn-outline">
+                Painel do administrador
+              </Link>
             ) : user ? (
               <Link to="/conta" className="btn btn-outline">
                 Minha conta
@@ -156,6 +160,10 @@ export default function Home() {
         {user?.role === 'pesquisador' ? (
           <Link to="/meus-artigos/novo" className="btn btn-primary">
             Enviar meu artigo
+          </Link>
+        ) : user?.role === 'admin' ? (
+          <Link to="/admin" className="btn btn-primary">
+            Abrir o painel
           </Link>
         ) : user ? (
           <Link to="/conta" className="btn btn-primary">

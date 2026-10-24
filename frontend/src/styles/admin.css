@@ -1,0 +1,181 @@
+/* ===== Abas do painel ===== */
+.abas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid rgba(184, 134, 11, 0.35);
+}
+
+.aba {
+  padding: 10px 20px;
+  border-radius: 8px 8px 0 0;
+  color: var(--azul);
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.aba:hover {
+  background: var(--bege-claro);
+}
+
+.aba-ativa {
+  background: var(--azul);
+  color: #fff;
+}
+
+/* ===== Fila de avaliação ===== */
+.item-fila {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.item-fila-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.detalhes {
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.detalhes h4 {
+  margin: 12px 0 6px;
+  color: var(--azul);
+  font-family: 'Cinzel', serif;
+}
+
+.detalhes p {
+  line-height: 1.7;
+}
+
+.painel-publicar {
+  padding: 16px;
+  background: var(--bege-claro);
+  border: 1px solid rgba(184, 134, 11, 0.3);
+  border-radius: 10px;
+}
+
+.painel-publicar label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: var(--azul);
+}
+
+.painel-publicar select {
+  width: 100%;
+  max-width: 520px;
+  padding: 10px 12px;
+  border: 1px solid #d9d2c3;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: #fff;
+}
+
+.painel-publicar small {
+  display: block;
+  margin-top: 6px;
+}
+
+/* ===== Formulários e listas de gestão ===== */
+.painel-form {
+  margin-bottom: 25px;
+  padding: 24px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: var(--sombra);
+}
+
+.painel-form h3 {
+  margin-bottom: 16px;
+  color: var(--azul);
+  font-family: 'Cinzel', serif;
+}
+
+.painel-form textarea {
+  resize: vertical;
+}
+
+.form-linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-linha-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.admin-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+}
+
+.admin-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px 20px;
+  background: #fff;
+  border-left: 5px solid var(--dourado);
+  border-radius: 10px;
+  box-shadow: var(--sombra);
+}
+
+.admin-item strong {
+  display: block;
+  color: var(--azul);
+}
+
+.admin-item small {
+  color: #6b6155;
+}
+
+.voce {
+  color: var(--dourado);
+  font-weight: 500;
+}
+
+.perfil-controle select {
+  padding: 8px 12px;
+  border: 1px solid #d9d2c3;
+  border-radius: 8px;
+  font-family: inherit;
+  background: #fff;
+}
+
+.perfil-controle select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.so-leitor-de-tela {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .form-linha,
+  .form-linha-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .aba {
+    padding: 8px 14px;
+  }
+}

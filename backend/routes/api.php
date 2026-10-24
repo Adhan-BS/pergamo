@@ -55,6 +55,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::middleware('role:admin')->prefix('admin')->group(function () {
         // Avaliação e publicação
         Route::get('/articles', [ArticleReviewController::class, 'index']);
+        Route::get('/articles/{article}/download', [ArticleReviewController::class, 'download']);
         Route::patch('/articles/{article}/publish', [ArticleReviewController::class, 'publish']);
 
         // CRUD de áreas, revistas e edições

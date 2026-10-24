@@ -7,6 +7,8 @@ use App\Http\Requests\Article\PublishArticleRequest;
 use App\Http\Resources\ManagedArticleResource;
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ArticleReviewController extends Controller
 {
@@ -26,6 +28,19 @@ class ArticleReviewController extends Controller
             ->withQueryString();
 
         return ManagedArticleResource::collection($items);
+    }
+
+    /**
+     * O admin lê o PDF de qualquer artigo, publicado ou não, para poder avaliá-lo.
+     * Não conta como download.
+     */
+    public function download(Article $article)
+    {
+        if (! Storage::disk('local')->exists($article->file_path)) {
+            return response()->json(['message' => 'Arquivo do artigo não está disponível.'], 404);
+        }
+
+        return Storage::disk('local')->download($article->file_path, Str::slug($article->title) . '.pdf');
     }
 
     /** submetido -> publicado, vinculando a uma edição. */

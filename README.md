@@ -39,7 +39,6 @@ pergamo/
 - Testes automatizados da API, diagrama EER e coleção do Postman
 - Front-end em React: páginas públicas, cadastro, login, conta e área do pesquisador
 
-**Pendente**
 
 - Front-end do administrador: fila de avaliação e publicação, gestão do catálogo e dos usuários
   (as funções já existem na API e podem ser usadas pelo Postman)
@@ -183,7 +182,7 @@ Ao escrever URLs, **não deixe espaço** entre `{{base_url}}` e a barra.
 
 ## Rotas da API
 
-Todas começam com `/api`, e são 35 no total. Exemplo: `GET /api/articles`.
+Todas começam com `/api`, e são 36 no total. Exemplo: `GET /api/articles`.
 
 **Públicas**
 
@@ -232,6 +231,7 @@ Todas começam com `/api`, e são 35 no total. Exemplo: `GET /api/articles`.
 | GET, POST, PUT, DELETE | `/admin/issues` | CRUD de edições |
 | GET | `/admin/users` | Lista usuários (`?role=`, `?q=`) |
 | PATCH | `/admin/users/{id}/role` | Altera o perfil de acesso |
+| GET | '/admin/articles/{id}/download' | Lê o PDF de qualquer artigo
 
 Para ver todas as rotas, rode `php artisan route:list --path=api`.
 

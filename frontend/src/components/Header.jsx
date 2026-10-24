@@ -59,6 +59,7 @@ export default function Header() {
         {user ? (
           <>
             {user.role === 'pesquisador' && <NavLink to="/meus-artigos">Meus artigos</NavLink>}
+            {user.role === 'admin' && <NavLink to="/admin">Painel</NavLink>}
             <NavLink to="/conta">Conta</NavLink>
             <button type="button" className="nav-btn" onClick={handleLogout}>
               Sair

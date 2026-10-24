@@ -37,6 +37,8 @@ src/
 ├── pages/        Home, Catalog, ArticleDetail, Journals, JournalDetail,
 │                 IssueDetail, About, Login, Register, Account, NotFound
 │   └── researcher/   MyArticles, ArticleForm (área do pesquisador)
+│   └── admin/        AdminLayout, ReviewQueue, ManageAreas, ManageJournals,
+│                     ManageIssues, ManageUsers (painel do administrador)
 ├── styles/       CSS global e por página
 └── utils/        formatação de datas, rótulos e erros de formulário
 ```
@@ -58,6 +60,11 @@ src/
 | `/meus-artigos` | Lista dos meus artigos, com status, enviar para avaliação e excluir | Pesquisador |
 | `/meus-artigos/novo` | Enviar um novo artigo com PDF | Pesquisador |
 | `/meus-artigos/:id/editar` | Editar o artigo, trocar o PDF ou enviar para avaliação | Pesquisador |
+| `/admin/avaliacao` | Fila de avaliação: ler o PDF, ver detalhes, publicar numa edição, excluir | Administrador |
+| `/admin/areas` | Criar, editar e excluir áreas | Administrador |
+| `/admin/revistas` | Criar, editar e excluir revistas | Administrador |
+| `/admin/edicoes` | Criar, editar e excluir edições | Administrador |
+| `/admin/usuarios` | Buscar usuários e alterar o perfil de acesso | Administrador |
 
 ## Como funciona a autenticação
 

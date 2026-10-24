@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth, researcher } from '../api/index.js';
+import { admin, auth, researcher } from '../api/index.js';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useFetch } from '../hooks/useFetch.js';
 import { fieldError, initials, roleLabel } from '../utils/format.js';
@@ -12,6 +12,11 @@ export default function Account() {
 
   const isResearcher = user.role === 'pesquisador';
   const mine = useFetch(() => (isResearcher ? researcher.list(1) : Promise.resolve(null)), [isResearcher]);
+  const isAdmin = user.role === 'admin';
+  const pending = useFetch(
+    () => (isAdmin ? admin.reviewQueue({ status: 'submetido' }) : Promise.resolve(null)),
+    [isAdmin],
+  );
 
   const [profile, setProfile] = useState({
     name: user.name,
@@ -97,6 +102,12 @@ export default function Account() {
           <h3>📅 Membro desde</h3>
           <span>{memberSince}</span>
         </div>
+        {isAdmin && (
+          <Link to="/admin/avaliacao" className="card-dashboard card-link">
+            <h3>⏳ Aguardando avaliação</h3>
+            <span>{pending.data?.meta?.total ?? '—'}</span>
+          </Link>
+        )}
         {isResearcher && (
           <Link to="/meus-artigos" className="card-dashboard card-link">
             <h3>📄 Meus artigos</h3>

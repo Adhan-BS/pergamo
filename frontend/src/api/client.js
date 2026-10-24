@@ -95,3 +95,38 @@ export async function request(path, { method = 'GET', body, params, headers } = 
 
   return data;
 }
+
+/**
+ * Baixa um arquivo protegido (ex.: PDF de um artigo ainda não publicado).
+ * Um link comum não envia o token, então a leitura é feita aqui e devolvida como Blob.
+ */
+export async function requestBlob(path) {
+  const headers = { Accept: 'application/pdf, application/json' };
+  const token = tokenStore.get();
+  if (token) headers.Authorization = `Bearer ${token}`;
+
+  let response;
+  try {
+    response = await fetch(`${BASE_URL}${path}`, { headers });
+  } catch {
+    throw new ApiError(
+      'Não foi possível conectar à API. Confira se o servidor Laravel está rodando (php artisan serve).',
+    );
+  }
+
+  if (!response.ok) {
+    let data = null;
+    try {
+      data = await response.json();
+    } catch {
+      /* resposta sem corpo JSON */
+    }
+    if (response.status === 401 && token) {
+      tokenStore.clear();
+      window.dispatchEvent(new Event(UNAUTHORIZED_EVENT));
+    }
+    throw new ApiError(data?.message ?? `Erro ${response.status}`, response.status);
+  }
+
+  return response.blob();
+}

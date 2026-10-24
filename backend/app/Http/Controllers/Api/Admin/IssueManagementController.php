@@ -10,14 +10,16 @@ use Illuminate\Http\Request;
 
 class IssueManagementController extends Controller
 {
-    /** Lista edições. Filtro opcional: ?journal=id */
+    /** Lista edições. Filtros opcionais: ?journal=id  ?per_page=15 (máximo 100) */
     public function index(Request $request)
     {
-        $issues = Issue::with('journal')
+        $perPage = min(max((int) $request->query('per_page', 15), 1), 100);
+
+        $issues = Issue::with('journal.area')
             ->when($request->query('journal'), fn ($q, $id) => $q->where('journal_id', $id))
             ->orderByDesc('year')
             ->orderByDesc('number')
-            ->paginate(15)
+            ->paginate($perPage)
             ->withQueryString();
 
         return IssueResource::collection($issues);
