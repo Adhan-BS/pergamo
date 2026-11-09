@@ -37,12 +37,13 @@ pergamo/
 - CRUD do administrador para áreas, revistas e edições, e gestão de usuários
 - Edição de perfil e troca de senha
 - Testes automatizados da API, diagrama EER e coleção do Postman
-- Front-end em React: páginas públicas, cadastro, login, conta e área do pesquisador
+- Front-end em React completo: páginas públicas, cadastro, login, conta, área do pesquisador e painel do administrador
 
+**Pendente**
 
-- Front-end do administrador: fila de avaliação e publicação, gestão do catálogo e dos usuários
-  (as funções já existem na API e podem ser usadas pelo Postman)
 - Recuperação de senha e confirmação de e-mail
+- Recusar um artigo com um comentário para o autor (hoje o administrador publica ou exclui)
+- Testes automatizados do front-end
 
 ## Modelo de dados
 
@@ -78,7 +79,7 @@ php -m | findstr /i "pdo_mysql mbstring openssl fileinfo curl zip"
 **1. Clonar o repositório**
 
 ```powershell
-git clone https://github.com/Adhan-Borges/pergamo.git
+git clone https://github.com/SEU-USUARIO/pergamo.git
 cd pergamo\backend
 ```
 
@@ -158,6 +159,32 @@ Criados pelo seeder, todos com a senha `senha1234`:
 | `pesquisador@pergamo.test` | pesquisador | Enviar e gerenciar os próprios artigos |
 | `leitor@pergamo.test` | leitor | Navegar pelo catálogo e baixar artigos |
 
+## Como usar o sistema
+
+Com o back-end e o front-end rodando, abra `http://localhost:5173` e use as contas da tabela acima.
+
+**Leitor (ou visitante)**
+
+1. Em **Artigos**, busque por título, resumo, autor ou palavra-chave e filtre por área.
+2. Abra um artigo para ver autores, resumo e palavras-chave, e clique em **Baixar PDF**.
+3. Em **Revistas**, navegue pelas edições de cada revista.
+
+**Pesquisador**
+
+1. Entre com `pesquisador@pergamo.test` e abra **Meus artigos**.
+2. Clique em **+ Novo artigo**, preencha título, resumo, área, palavras-chave e autores, anexe o PDF e salve. O artigo fica como **Rascunho**.
+3. Edite o que precisar ou troque o PDF. Quando estiver pronto, clique em **Enviar para avaliação**.
+4. Acompanhe o status na lista: **Rascunho**, **Em avaliação** ou **Publicado**.
+
+**Administrador**
+
+1. Entre com `admin@pergamo.test` e abra **Painel**.
+2. Na aba **Avaliação**, veja os artigos em avaliação, leia o PDF e clique em **Publicar…** para escolher a edição.
+3. Nas abas **Áreas**, **Revistas** e **Edições**, crie, edite e exclua o conteúdo do catálogo.
+4. Na aba **Usuários**, busque pessoas e altere o perfil de acesso delas.
+
+O artigo publicado aparece na hora no catálogo público.
+
 ## Testando a API no Postman
 
 1. No Postman, clique em **Import** e selecione os dois arquivos da pasta `docs`:
@@ -225,13 +252,13 @@ Todas começam com `/api`, e são 36 no total. Exemplo: `GET /api/articles`.
 | Método | Rota | Descrição |
 |---|---|---|
 | GET | `/admin/articles` | Fila de avaliação (`?status=`) |
+| GET | `/admin/articles/{id}/download` | Lê o PDF de qualquer artigo, publicado ou não |
 | PATCH | `/admin/articles/{id}/publish` | Publica numa edição (`issue_id`) |
 | POST, PUT, DELETE | `/admin/areas` | CRUD de áreas |
 | POST, PUT, DELETE | `/admin/journals` | CRUD de revistas |
 | GET, POST, PUT, DELETE | `/admin/issues` | CRUD de edições |
 | GET | `/admin/users` | Lista usuários (`?role=`, `?q=`) |
 | PATCH | `/admin/users/{id}/role` | Altera o perfil de acesso |
-| GET | '/admin/articles/{id}/download' | Lê o PDF de qualquer artigo
 
 Para ver todas as rotas, rode `php artisan route:list --path=api`.
 

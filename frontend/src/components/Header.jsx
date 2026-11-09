@@ -45,7 +45,7 @@ export default function Header() {
         aria-expanded={menuOpen}
         onClick={() => setMenuOpen((open) => !open)}
       >
-        ☰
+        
       </button>
 
       <nav className={menuOpen ? 'aberto' : ''}>
@@ -84,7 +84,7 @@ export default function Header() {
           onChange={(event) => setTerm(event.target.value)}
         />
         <button type="submit" aria-label="Pesquisar">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+          <svg viewBox="0 0 24 24" width="20" height="22" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
             <circle cx="11" cy="11" r="7" />
             <path d="m20 20-3.5-3.5" />
           </svg>
